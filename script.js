@@ -34,7 +34,7 @@ function loadAll() {
 // ===== TASKS =====
 function addTask() {
     let val = document.getElementById("taskInput").value;
-    let key = currentUser + "_tasks";
+    let key = shared_tasks
     let data = JSON.parse(localStorage.getItem(key)) || [];
     data.push(val);
     localStorage.setItem(key, JSON.stringify(data));
@@ -42,7 +42,7 @@ function addTask() {
 }
 
 function loadTasks() {
-    let key = currentUser + "_tasks";
+    let key = shared_tasks
     let data = JSON.parse(localStorage.getItem(key)) || [];
     let list = document.getElementById("tasksList");
     list.innerHTML = "";
