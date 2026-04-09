@@ -56,7 +56,7 @@ function loadTasks() {
 // ===== HOMEWORK =====
 function addHomework() {
     let val = document.getElementById("homeworkInput").value;
-    let key = currentUser + "_homework";
+    let key = shared_homework
     let data = JSON.parse(localStorage.getItem(key)) || [];
     data.push(val);
     localStorage.setItem(key, JSON.stringify(data));
@@ -64,7 +64,7 @@ function addHomework() {
 }
 
 function loadHomework() {
-    let key = currentUser + "_homework";
+    let key = shared_homework
     let data = JSON.parse(localStorage.getItem(key)) || [];
     let list = document.getElementById("homeworkList");
     list.innerHTML = "";
