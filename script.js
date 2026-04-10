@@ -8,7 +8,7 @@ function login() {
         localStorage.setItem("currentUser", user);
         document.getElementById("welcome").innerText = "Welcome " + user;
         showSection("dashboardPage");
-        loadAll();
+        loadAll1();
 } else {
         alert("Please enter your name");
     
