@@ -22,7 +22,10 @@ function logout() {
     showSection("loginPage");
 }
 
-let tasks = [];
+let tasks = JSON.parse(localStorage.getItem("myTasks")) || [];
+function saveTasks() {
+    localStorage.setItem("myTasks", JSON.stringify(tasks));
+}
 
 function addTask() {
     let input = document.getElementById("taskInput");
@@ -30,7 +33,13 @@ function addTask() {
         tasks.push(input.value);
         input.value = ""; 
         renderTasks();
+        saveTasks();
     }
+    function deleteTask(index) {
+    tasks.splice(index, 1);
+    renderTasks();
+    saveTasks();  
+}
 }
 
 function renderTasks() {
@@ -71,4 +80,5 @@ function showSection(id) {
     if (id === 'notesPage') {
         loadNotes();
     }
-}
+renderTasks();
+
