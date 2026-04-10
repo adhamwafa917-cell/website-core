@@ -1,106 +1,23 @@
 let currentUser = "";
 
-// Login
 function login() {
-    let user = document.getElementById("username").value;
-    if(user.trim() !== "") {
-        currentUser = user;
-        localStorage.setItem("currentUser", user);
-        document.getElementById("welcome").innerText = "Welcome " + user;
+    let userElement = document.getElementById("username");
+    if (userElement && userElement.value.trim() !== "") {
+        currentUser = userElement.value;
+        localStorage.setItem("currentUser", currentUser);
+        document.getElementById("welcome").innerText = "Welcome " + currentUser;
         showSection("dashboardPage");
-        loadAll1();
-} else {
+    } else {
         alert("Please enter your name");
-    
-
-
-
-// Logout
-function logout() {
-    currentUser = "";
-    showSection("loginPage");
+    }
 }
 
-// Sections
 function showSection(id) {
     document.querySelectorAll(".section").forEach(s => s.style.display = "none");
     document.getElementById(id).style.display = "block";
 }
 
-// Load all
-function loadAll() {
-    loadTasks();
-    loadHomework();
-    loadNotes();
-}
-
-// ===== TASKS =====
-function addTask() {
-    let val = document.getElementById("taskInput").value;
-    let key = "shared_tasks";
-    let data = JSON.parse(localStorage.getItem(key)) || [];
-    data.push(val);
-    localStorage.setItem(key, JSON.stringify(data));
-    loadTasks();
-}
-
-function loadTasks() {
-    let key = "shared_tasks"; 
-    let data = JSON.parse(localStorage.getItem(key)) || [];
-    let list = document.getElementById("tasksList");
-    list.innerHTML = "";
-
-    data.forEach((d, index) => {
-        let li = document.createElement("li");
-        
-        li.innerHTML = `
-            <span>${d}</span>
-            <button class="delete-btn" onclick="deleteTask(${index})">Delete</button>
-        `;
-        
-        list.appendChild(li);
-    });
-}
-}
-
-// ===== HOMEWORK =====
-function addHomework() {
-    let val = document.getElementById("homeworkInput").value;
-    let key = "shared_homework";
-    let data = JSON.parse(localStorage.getItem(key)) || [];
-    data.push(val);
-    localStorage.setItem(key, JSON.stringify(data));
-    loadHomework();
-}
-
-function loadHomework() {
-    let key = "shared_homework";
-    let data = JSON.parse(localStorage.getItem(key)) || [];
-    let list = document.getElementById("homeworkList");
-    list.innerHTML = "";
-    data.forEach(d => {
-        let li = document.createElement("li");
-        li.innerText = d;
-        list.appendChild(li);
-    });
-}
-
-// ===== NOTES =====
-function saveNotes() {
-    let key = currentUser + "_notes";
-    let val = document.getElementById("notesArea").value;
-    localStorage.setItem(key, val);
-}
-function deleteTask(index) {
-    let key = "shared_tasks";
-    let data = JSON.parse(localStorage.getItem(key)) || [];
-    data.splice(index, 1);
-    localStorage.setItem(key, JSON.stringify(data));
-    loadTasks();
-}
-
-function loadNotes() {
-    let key = currentUser + "_notes";
-    let val = localStorage.getItem(key);
-    document.getElementById("notesArea").value = val || "";
+function logout() {
+    currentUser = "";
+    showSection("loginPage");
 }
