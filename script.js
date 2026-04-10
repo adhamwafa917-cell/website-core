@@ -11,9 +11,9 @@ function login() {
         loadAll();
 } else {
         alert("Please enter your name");
-    }
+    
 
-}
+
 
 // Logout
 function logout() {
