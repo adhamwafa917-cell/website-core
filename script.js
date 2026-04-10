@@ -42,15 +42,22 @@ function addTask() {
 }
 
 function loadTasks() {
-    let key = "shared_tasks";
+    let key = "shared_tasks"; 
     let data = JSON.parse(localStorage.getItem(key)) || [];
     let list = document.getElementById("tasksList");
     list.innerHTML = "";
-    data.forEach(d => {
+
+    data.forEach((d, index) => {
         let li = document.createElement("li");
-        li.innerText = d;
+        
+        li.innerHTML = `
+            <span>${d}</span>
+            <button class="delete-btn" onclick="deleteTask(${index})">Delete</button>
+        `;
+        
         list.appendChild(li);
     });
+}
 }
 
 // ===== HOMEWORK =====
@@ -80,6 +87,13 @@ function saveNotes() {
     let key = currentUser + "_notes";
     let val = document.getElementById("notesArea").value;
     localStorage.setItem(key, val);
+}
+function deleteTask(index) {
+    let key = "shared_tasks";
+    let data = JSON.parse(localStorage.getItem(key)) || [];
+    data.splice(index, 1);
+    localStorage.setItem(key, JSON.stringify(data));
+    loadTasks();
 }
 
 function loadNotes() {
