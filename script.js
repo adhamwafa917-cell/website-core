@@ -3,13 +3,16 @@ let currentUser = "";
 // Login
 function login() {
     let user = document.getElementById("username").value;
-    if(user !== "") {
+    if(user.trim() !== "") {
         currentUser = user;
         localStorage.setItem("currentUser", user);
         document.getElementById("welcome").innerText = "Welcome " + user;
         showSection("dashboardPage");
         loadAll();
+} else {
+        alert("Please enter your name");
     }
+
 }
 
 // Logout
