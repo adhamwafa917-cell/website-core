@@ -77,8 +77,7 @@ function showSection(id) {
     document.getElementById(id).style.display = "block";
     
     if (id === 'notesPage') {
-        loadNotes();
+        loadNotes();}
+    {
     }
-}
-
 renderTasks();
