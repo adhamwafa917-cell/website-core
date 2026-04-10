@@ -80,5 +80,4 @@ function showSection(id) {
     if (id === 'notesPage') {
         loadNotes();
     }
-renderTasks();
 
