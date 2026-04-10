@@ -25,20 +25,22 @@ function logout() {
 let tasks = [];
 
 function addTask() {
-    let taskInput = document.getElementById("taskInput");
-    if (taskInput.value.trim() !== "") {
-        tasks.push(taskInput.value);
-        taskInput.value = "";
+    let input = document.getElementById("taskInput");
+    if (input && input.value.trim() !== "") {
+        tasks.push(input.value);
+        input.value = ""; 
         renderTasks();
     }
 }
 
 function renderTasks() {
-    let taskList = document.getElementById("taskList");
-    taskList.innerHTML = "";
+    let list = document.getElementById("taskList");  
+    if (!list) return;
+    list.innerHTML = "";
     tasks.forEach((task, index) => {
-        taskList.innerHTML += `<li>${task} <button onclick="deleteTask(${index})">Delete</button></li>`;
+        list.innerHTML += `<li>${task} <button onclick="deleteTask(${index})">Delete</button></li>`;
     });
+
 }
 
 function deleteTask(index) {
