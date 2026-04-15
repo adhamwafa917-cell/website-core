@@ -93,21 +93,19 @@ window.addEventListener('scroll', () => {
 // تشغيل الدالة مرة واحدة عند تحميل الصفحة لإظهار العناصر المرئية بالفعل
 handleScrollAnimation();
 // --- الجزء الجديد: تشغيل كروت الخدمات وتطوير تسجيل الدخول ---
-
-// 1. تشغيل كروت الخدمات عند الضغط عليها
+// تشغيل كروت الخدمات وفتح الصفحات فوراً
 document.querySelectorAll('.service-item').forEach(item => {
-    item.style.cursor = "pointer"; // تغيير شكل الماوس ليد عند الوقوف على الكارت
-    
     item.addEventListener('click', function() {
-        // هنجيب اسم الخدمة من الـ h3 اللي جوه الكارت اللي اتضغط عليه
         const serviceName = this.querySelector('h3').innerText;
         
-        // هنا بنظهر رسالة ترحيب.. تقدر مستقبلاً تغيرها بفتح صفحة جديدة
-        alert("جاري نقلك إلى قسم: " + serviceName);
-        
-        /* لو عايز تفتح صفحة لكل خدمة فك التعليق عن السطر ده:
-        window.location.href = serviceName + ".html"; 
-        */
+        // دي أهم خطوة: بتشوف اسم الخدمة وتفتح الصفحة بتاعتها
+        if (serviceName === "أدوات مساعدة") {
+            window.location.href = "tools.html";
+        } else if (serviceName === "استشارات") {
+            window.location.href = "consult.html";
+        } else if (serviceName === "دعم نفسي") {
+            window.location.href = "support.html";
+        }
     });
 });
 
