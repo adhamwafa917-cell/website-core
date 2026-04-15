@@ -132,6 +132,11 @@ document.getElementById('loginForm').onsubmit = function(e) {
             location.reload();
         }
     };
+    // كود إظهار نافذة تسجيل الدخول تلقائياً عند فتح الموقع
+window.addEventListener('load', function() {
+    // استدعاء الوظيفة اللي بتفتح المودال اللي أنت عاملها أصلاً
+    openLogin();
+});
     
     closeLogin(); // إغلاق النافذة المنبثقة
 }
