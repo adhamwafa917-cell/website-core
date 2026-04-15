@@ -132,18 +132,18 @@ document.getElementById('loginForm').onsubmit = function(e) {
             location.reload();
         }
     };
-  // كود إظهار نافذة تسجيل الدخول - نسخة الطوارئ المضمونة
+
+   // كود إظهار نافذة تسجيل الدخول - النسخة المصلحة
 window.addEventListener('load', function() {
     setTimeout(function() {
         const modal = document.getElementById("loginModal");
         if (modal) {
             modal.style.display = "block";
             modal.style.opacity = "1";
-            modal.style.zIndex = "9999"; // عشان نضمن إنها فوق أي حاجة ثانية
+            modal.style.zIndex = "9999";
             console.log("تم إظهار النافذة بنجاح!");
         } else {
-            console.log("لم أجد عنصر باسم loginModal.. تأكد من الاسم في ملف HTML");
+            console.log("لم يتم العثور على loginModal في الـ HTML");
         }
-    }, 1000); // تأخير ثانية واحدة (1000 مللي ثانية)
-});
-    
+    }, 1000); 
+}); // القوس ده هو اللي كان ناقص وموقف الكود كله 
