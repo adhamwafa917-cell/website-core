@@ -148,5 +148,4 @@ if (document.readyState === "complete") {
     window.addEventListener("load", showLoginOnLoad);
 }
     
-    closeLogin(); // إغلاق النافذة المنبثقة
-}
+    
