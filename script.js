@@ -132,11 +132,21 @@ document.getElementById('loginForm').onsubmit = function(e) {
             location.reload();
         }
     };
-    // كود إظهار نافذة تسجيل الدخول تلقائياً عند فتح الموقع
-window.addEventListener('load', function() {
-    // استدعاء الوظيفة اللي بتفتح المودال اللي أنت عاملها أصلاً
-    openLogin();
-});
+// كود إظهار نافذة تسجيل الدخول فوراً وبدون تأخير
+function showLoginOnLoad() {
+    const modal = document.getElementById("loginModal");
+    if (modal) {
+        modal.style.display = "block";
+        modal.style.opacity = "1";
+    }
+}
+
+// تشغيل الدالة بمجرد ما الصفحة تجهز
+if (document.readyState === "complete") {
+    showLoginOnLoad();
+} else {
+    window.addEventListener("load", showLoginOnLoad);
+}
     
     closeLogin(); // إغلاق النافذة المنبثقة
 }
