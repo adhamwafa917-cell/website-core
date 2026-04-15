@@ -132,20 +132,18 @@ document.getElementById('loginForm').onsubmit = function(e) {
             location.reload();
         }
     };
-// كود إظهار نافذة تسجيل الدخول فوراً وبدون تأخير
-function showLoginOnLoad() {
-    const modal = document.getElementById("loginModal");
-    if (modal) {
-        modal.style.display = "block";
-        modal.style.opacity = "1";
-    }
-}
-
-// تشغيل الدالة بمجرد ما الصفحة تجهز
-if (document.readyState === "complete") {
-    showLoginOnLoad();
-} else {
-    window.addEventListener("load", showLoginOnLoad);
-}
-    
+  // كود إظهار نافذة تسجيل الدخول - نسخة الطوارئ المضمونة
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        const modal = document.getElementById("loginModal");
+        if (modal) {
+            modal.style.display = "block";
+            modal.style.opacity = "1";
+            modal.style.zIndex = "9999"; // عشان نضمن إنها فوق أي حاجة ثانية
+            console.log("تم إظهار النافذة بنجاح!");
+        } else {
+            console.log("لم أجد عنصر باسم loginModal.. تأكد من الاسم في ملف HTML");
+        }
+    }, 1000); // تأخير ثانية واحدة (1000 مللي ثانية)
+});
     
