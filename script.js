@@ -146,5 +146,5 @@ window.addEventListener('load', function() {
             console.log("لم يتم العثور على loginModal في الـ HTML");
         }
     }, 1000); 
-    
-}); // القوس ده هو اللي كان ناقص وموقف الكود كله 
+     
+});
