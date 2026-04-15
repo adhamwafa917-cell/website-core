@@ -153,6 +153,8 @@ nav {
 .service-item {
     background: var(--bg-main); padding: 15px; border-radius: 15px; width: 150px; text-align: center; 
     transition: var(--transition);
+    cursor: pointer;
+    user-select: non;
 }
 
 .service-item:hover {
