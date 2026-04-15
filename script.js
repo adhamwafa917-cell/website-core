@@ -92,3 +92,48 @@ window.addEventListener('scroll', () => {
 
 // تشغيل الدالة مرة واحدة عند تحميل الصفحة لإظهار العناصر المرئية بالفعل
 handleScrollAnimation();
+// --- الجزء الجديد: تشغيل كروت الخدمات وتطوير تسجيل الدخول ---
+
+// 1. تشغيل كروت الخدمات عند الضغط عليها
+document.querySelectorAll('.service-item').forEach(item => {
+    item.style.cursor = "pointer"; // تغيير شكل الماوس ليد عند الوقوف على الكارت
+    
+    item.addEventListener('click', function() {
+        // هنجيب اسم الخدمة من الـ h3 اللي جوه الكارت اللي اتضغط عليه
+        const serviceName = this.querySelector('h3').innerText;
+        
+        // هنا بنظهر رسالة ترحيب.. تقدر مستقبلاً تغيرها بفتح صفحة جديدة
+        alert("جاري نقلك إلى قسم: " + serviceName);
+        
+        /* لو عايز تفتح صفحة لكل خدمة فك التعليق عن السطر ده:
+        window.location.href = serviceName + ".html"; 
+        */
+    });
+});
+
+// 2. تحديث وظيفة تسجيل الدخول لتغيير شكل الزرار في النافبار
+const originalLoginFormSubmit = document.getElementById('loginForm').onsubmit;
+
+document.getElementById('loginForm').onsubmit = function(e) {
+    e.preventDefault();
+    
+    const email = this.querySelector('input[type="email"]').value;
+    
+    // إظهار تنبيه بالنجاح
+    alert("مرحباً بك في منصة سند! تم تسجيل الدخول بـ: " + email);
+    
+    // تغيير زرار "دخول" الأخضر ليكون زرار "خروج" أحمر
+    const loginBtn = document.querySelector('.login-trigger');
+    loginBtn.innerHTML = 'تسجيل خروج <i class="fas fa-sign-out-alt"></i>';
+    loginBtn.style.background = "#dc3545"; // لون أحمر
+    loginBtn.style.animation = "none";    // إيقاف حركة النبض
+    
+    // لما يدوس خروج الصفحة تعمل Refresh وترجع للحالة الأولى
+    loginBtn.onclick = function() {
+        if(confirm("هل تريد تسجيل الخروج؟")) {
+            location.reload();
+        }
+    };
+    
+    closeLogin(); // إغلاق النافذة المنبثقة
+}
