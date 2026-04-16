@@ -107,33 +107,34 @@ document.querySelectorAll('.service-item').forEach(item => {
             window.location.href = "support.html";
         }
     });
-});
+}); // قفلة الـ scrollElements.forEach
+}); // قفلة الـ window.addEventListener('scroll')
 
-// 2. تحديث وظيفة تسجيل الدخول لتغيير شكل الزرار في النافبار
-const originalLoginFormSubmit = document.getElementById('loginForm').onsubmit;
+// 1. معالجة نموذج تسجيل الدخول
+const loginForm = document.getElementById('loginForm');
+if (loginForm) {
+    loginForm.onsubmit = function(e) {
+        e.preventDefault();
+        const email = document.querySelector('input[type="email"]').value;
+        alert("مرحباً بك في منصة سند! تم تسجيل الدخول بـ " + email);
+        closeLogin();
 
-document.getElementById('loginForm').onsubmit = function(e) {
-    e.preventDefault();
-    
-    const email = this.querySelector('input[type="email"]').value;
-    
-    // إظهار تنبيه بالنجاح
-    alert("مرحباً بك في منصة سند! تم تسجيل الدخول بـ: " + email);
-    
-    // تغيير زرار "دخول" الأخضر ليكون زرار "خروج" أحمر
-    const loginBtn = document.querySelector('.login-trigger');
-    loginBtn.innerHTML = 'تسجيل خروج <i class="fas fa-sign-out-alt"></i>';
-    loginBtn.style.background = "#dc3545"; // لون أحمر
-    loginBtn.style.animation = "none";    // إيقاف حركة النبض
-    
-    // لما يدوس خروج الصفحة تعمل Refresh وترجع للحالة الأولى
-    loginBtn.onclick = function() {
-        if(confirm("هل تريد تسجيل الخروج؟")) {
-            location.reload();
+        // تغيير شكل زرار الدخول ليكون خروج
+        const loginBtn = document.querySelector('.login-trigger');
+        if (loginBtn) {
+            loginBtn.innerHTML = 'تسجيل خروج <i class="fas fa-sign-out-alt"></i>';
+            loginBtn.style.background = "#dc3545"; // لون أحمر
+            loginBtn.style.animation = "none";
+            loginBtn.onclick = function() {
+                if(confirm("هل تريد تسجيل الخروج؟")) {
+                    location.reload();
+                }
+            };
         }
     };
+}
 
-   // كود إظهار نافذة تسجيل الدخول - النسخة المصلحة
+// 2. كود إظهار نافذة تسجيل الدخول تلقائياً عند فتح الموقع
 window.addEventListener('load', function() {
     setTimeout(function() {
         const modal = document.getElementById("loginModal");
@@ -141,10 +142,7 @@ window.addEventListener('load', function() {
             modal.style.display = "block";
             modal.style.opacity = "1";
             modal.style.zIndex = "9999";
-            console.log("تم إظهار النافذة بنجاح!");
-        } else {
-            console.log("لم يتم العثور على loginModal في الـ HTML");
+            console.log("النافذة ظهرت بنجاح!");
         }
-    }, 1000); 
-     
+    }, 1000);
 });
