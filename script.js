@@ -107,8 +107,7 @@ document.querySelectorAll('.service-item').forEach(item => {
             window.location.href = "support.html";
         }
     });
-}); // قفلة الـ scrollElements.forEach
-}); // قفلة الـ window.addEventListener('scroll')
+
 
 // 1. معالجة نموذج تسجيل الدخول
 const loginForm = document.getElementById('loginForm');
