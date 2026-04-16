@@ -89,3 +89,38 @@ window.addEventListener('load', function() {
         }
     }, 1000);
 });
+// 1. الرسائل التحفيزية لصفحة الدعم النفسي
+const quotes = [
+    "أنت أقوى مما تعتقد، وشجاعتك تلهمنا.",
+    "كل يوم جديد هو فرصة جديدة لبداية أجمل.",
+    "لا تقاس القوة بالجسد، بل بالإرادة التي لا تقهر.",
+    "وجودك في هذا العالم يصنع فرقاً كبيراً."
+];
+
+if (document.getElementById('motivational-quote')) {
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    document.getElementById('motivational-quote').innerText = randomQuote;
+}
+
+// 2. دالة القراءة المخصصة لصفحة الأدوات
+function readCustomText() {
+    const text = document.getElementById('textToRead').value;
+    if (text) {
+        window.speechSynthesis.cancel();
+        const msg = new SpeechSynthesisUtterance(text);
+        msg.lang = 'ar-SA';
+        window.speechSynthesis.speak(msg);
+    } else {
+        alert("من فضلك اكتب نصاً أولاً");
+    }
+}
+
+// 3. معالجة نموذج الاستشارات
+const consultForm = document.getElementById('consultForm');
+if (consultForm) {
+    consultForm.onsubmit = function(e) {
+        e.preventDefault();
+        alert("تم استلام طلبك بنجاح. سيتواصل معك أحد خبرائنا قريباً.");
+        this.reset();
+    };
+}
