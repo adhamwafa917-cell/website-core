@@ -311,8 +311,3 @@ button:hover {
     cursor: pointer;
     transition: 0.3s;
 }
-
-.nav-tools button:hover {
-    background: #0056b3;
-    transform: scale(1.1);
-}
