@@ -286,3 +286,28 @@ button:hover {
     background-color: #0056b3;
     transform: scale(1.05);
 }
+/* تنسيق شريط الأدوات عشان يفضل في مكانه ومنظم */
+.nav-tools {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* مسافة بين كل زرار والتاني */
+    flex-wrap: nowrap; /* يمنع الزراير إنها تنزل سطر جديد */
+}
+
+/* تنسيق الزراير نفسها عشان تبان دائرية وشيك */
+.nav-tools button {
+    background: #f0f0f0;
+    border: none;
+    border-radius: 50%; /* بيخلي الزرار دائري */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-tools button:hover {
+    background: #e0e0e0;
+}
