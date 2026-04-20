@@ -124,3 +124,25 @@ if (consultForm) {
         this.reset();
     };
 }
+
+function speakText() {
+    // 1. نجيب النص اللي المستخدم كتبه
+    const textInput = document.getElementById('text-to-read').value;
+
+    // 2. نتأكد إن المربع مش فاضي
+    if (textInput.trim() === "") {
+        alert("من فضلك اكتب نص أولاً!");
+        return;
+    }
+
+    // 3. ننشئ طلب النطق
+    const speech = new SpeechSynthesisUtterance();
+    speech.text = textInput;
+    speech.lang = 'ar-SA'; // لغة عربية
+    speech.volume = 1;     // مستوى الصوت (0 لـ 1)
+    speech.rate = 1;       // السرعة
+    speech.pitch = 1;      // حدة الصوت
+
+    // 4. تنفيذ النطق
+    window.speechSynthesis.speak(speech);
+}
