@@ -286,28 +286,33 @@ button:hover {
     background-color: #0056b3;
     transform: scale(1.05);
 }
-/* تنسيق شريط الأدوات عشان يفضل في مكانه ومنظم */
+
+/* تنسيق شريط الأدوات العلوي */
+nav {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 10px 20px !important;
+    background: #f8f9fa !important;
+    border-bottom: 1px solid #ddd;
+}
 
 .nav-tools {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: #f8f9fa; /* خلفية خفيفة عشان تظهر الأزرار */
-    padding: 5px 15px;
-    border-radius: 30px;
-    margin: 10px; /* بيدي مساحة حوالين الأدوات */
+    display: flex !important;
+    flex-direction: row !important; /* لضمان إنهم جنب بعض مش تحت بعض */
+    gap: 10px !important;
 }
 
 .nav-tools button {
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 38px;
-    height: 38px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: 0.3s;
+    background: #007bff !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 50% !important;
+    width: 45px !important;
+    height: 45px !important;
+    cursor: pointer !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    font-size: 18px !important;
 }
