@@ -5,7 +5,7 @@ function increaseText() { document.body.classList.toggle("large-text"); }
 
 function speak() {
     window.speechSynthesis.cancel();
-    const text = document.querySelector('main').innerText;
+    const text = document.querySelector('.container').innerText;
     const msg = new SpeechSynthesisUtterance(text);
     msg.lang = 'ar-SA';
     window.speechSynthesis.speak(msg);
